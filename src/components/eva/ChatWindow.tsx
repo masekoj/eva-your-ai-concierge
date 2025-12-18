@@ -32,15 +32,17 @@ export function ChatWindow({ className, onClose, onMinimize, isFullScreen = fals
   return (
     <div
       className={cn(
-        "flex flex-col bg-background border border-border rounded-2xl shadow-elevated overflow-hidden",
-        isFullScreen ? "w-full h-full" : "w-[400px] h-[600px]",
+        "flex flex-col bg-background overflow-hidden transition-all duration-300",
+        isFullScreen 
+          ? "w-full h-full sm:w-[400px] sm:h-[600px] sm:rounded-2xl sm:border sm:border-border sm:shadow-elevated" 
+          : "w-[400px] h-[600px] rounded-2xl border border-border shadow-elevated",
         className
       )}
     >
       <ChatHeader onClose={onClose} onMinimize={onMinimize} />
 
       {/* Messages Area */}
-      <div className="flex-1 overflow-y-auto p-4 space-y-4 scrollbar-thin bg-gradient-to-b from-background to-secondary/20">
+      <div className="flex-1 overflow-y-auto p-3 sm:p-4 space-y-3 sm:space-y-4 scrollbar-thin bg-gradient-to-b from-background to-secondary/20">
         {messages.map((message, index) => (
           <MessageBubble
             key={message.id}
@@ -56,7 +58,7 @@ export function ChatWindow({ className, onClose, onMinimize, isFullScreen = fals
       </div>
 
       {/* Input Area */}
-      <div className="p-4 border-t border-border bg-card/50 backdrop-blur-sm">
+      <div className="p-3 sm:p-4 border-t border-border bg-card/50 backdrop-blur-sm">
         <ChatInput onSend={sendMessage} disabled={isTyping} />
         <p className="text-[10px] text-muted-foreground text-center mt-2">
           Eva • Powered by Sunbird Tourism
