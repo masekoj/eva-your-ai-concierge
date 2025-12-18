@@ -39,13 +39,13 @@ export function ChatInput({ onSend, disabled = false, placeholder = "Type your m
 
   return (
     <form onSubmit={handleSubmit} className="relative">
-      <div className="flex items-end gap-2 p-3 bg-card border border-border rounded-2xl shadow-soft transition-smooth focus-within:shadow-elevated focus-within:border-primary/30">
+      <div className="flex items-end gap-1.5 sm:gap-2 p-2 sm:p-3 bg-card border border-border rounded-2xl shadow-soft transition-smooth focus-within:shadow-elevated focus-within:border-primary/30">
         <button
           type="button"
-          className="p-2 text-muted-foreground hover:text-foreground transition-smooth rounded-lg hover:bg-muted"
+          className="p-1.5 sm:p-2 text-muted-foreground hover:text-foreground transition-smooth rounded-lg hover:bg-muted hidden sm:flex"
           aria-label="Attach file"
         >
-          <Paperclip className="w-5 h-5" />
+          <Paperclip className="w-4 h-4 sm:w-5 sm:h-5" />
         </button>
 
         <textarea
@@ -57,39 +57,39 @@ export function ChatInput({ onSend, disabled = false, placeholder = "Type your m
           disabled={disabled}
           rows={1}
           className={cn(
-            "flex-1 resize-none bg-transparent text-sm text-foreground placeholder:text-muted-foreground focus:outline-none",
-            "max-h-[120px] scrollbar-thin"
+            "flex-1 resize-none bg-transparent text-sm text-foreground placeholder:text-muted-foreground focus:outline-none min-w-0",
+            "max-h-[120px] scrollbar-thin py-1.5 sm:py-0"
           )}
         />
 
         <button
           type="button"
-          className="p-2 text-muted-foreground hover:text-foreground transition-smooth rounded-lg hover:bg-muted"
+          className="p-1.5 sm:p-2 text-muted-foreground hover:text-foreground transition-smooth rounded-lg hover:bg-muted hidden sm:flex"
           aria-label="Add emoji"
         >
-          <Smile className="w-5 h-5" />
+          <Smile className="w-4 h-4 sm:w-5 sm:h-5" />
         </button>
 
         <button
           type="button"
-          className="p-2 text-muted-foreground hover:text-foreground transition-smooth rounded-lg hover:bg-muted"
+          className="p-1.5 sm:p-2 text-muted-foreground hover:text-foreground transition-smooth rounded-lg hover:bg-muted hidden sm:flex"
           aria-label="Voice message"
         >
-          <Mic className="w-5 h-5" />
+          <Mic className="w-4 h-4 sm:w-5 sm:h-5" />
         </button>
 
         <button
           type="submit"
           disabled={!message.trim() || disabled}
           className={cn(
-            "p-2.5 rounded-xl transition-smooth",
+            "p-2 sm:p-2.5 rounded-xl transition-smooth flex-shrink-0",
             message.trim() && !disabled
               ? "bg-primary text-primary-foreground shadow-soft hover:shadow-elevated active:scale-95"
               : "bg-muted text-muted-foreground cursor-not-allowed"
           )}
           aria-label="Send message"
         >
-          <Send className="w-5 h-5" />
+          <Send className="w-4 h-4 sm:w-5 sm:h-5" />
         </button>
       </div>
     </form>
